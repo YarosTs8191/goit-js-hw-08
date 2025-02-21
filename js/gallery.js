@@ -83,10 +83,12 @@ galleryContainer.innerHTML = images
   .join("");
 
 galleryContainer.addEventListener("click", (event) => {
-  event.preventDefault(); // Запобігає завантаженню зображення
+  event.preventDefault();
 
   if (event.target.classList.contains("gallery-image")) {
     const largeImageURL = event.target.dataset.source;
-    console.log("Ось посилання на велике зображення:", largeImageURL);
+    const modalWindow = basicLightbox.create(`
+      <img src="${largeImageURL}" width="800" height="600">`);
+    modalWindow.show();
   }
 });
